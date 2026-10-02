@@ -1,0 +1,6 @@
+# Arama motorlarının tüm sayfaları taramasına izin verilir.
+User-agent: *
+Allow: /
+
+# DEĞİŞTİR: Alan adınızı aldıktan sonra aşağıdaki adresi güncelleyin.
+Sitemap: https://www.alanadiniz.com/sitemap.xml

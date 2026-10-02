@@ -1,0 +1,12 @@
+# Cloudflare Pages ve Netlify bu dosyayı okuyarak güvenlik başlıklarını ekler.
+# Siteye yeni bir dış hizmet (ör. analiz aracı, randevu widget'ı) eklerseniz
+# Content-Security-Policy satırını güncellemeniz gerekir; aksi hâlde o hizmet çalışmaz.
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; frame-src https://www.google.com https://maps.google.com; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+
+/assets/*
+  Cache-Control: public, max-age=2592000

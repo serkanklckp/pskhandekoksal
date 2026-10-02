@@ -1,0 +1,9 @@
+# Yalnızca Apache kullanan klasik hosting firmaları (cPanel vb.) için geçerlidir.
+# Cloudflare Pages ve Netlify bu dosyayı dikkate almaz.
+Options -MultiViews
+RewriteEngine On
+# "hakkimda" gibi .html uzantısız adresleri ilgili dosyaya yönlendirir
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]
+ErrorDocument 404 /404.html
