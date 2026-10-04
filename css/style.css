@@ -3372,3 +3372,270 @@ fieldset.alan {
     padding-block: 1.5rem;
   }
 }
+/* 18. REVİZYON · EKİM 2026 ------------------------------------------------
+   A4 notları ve "Site metinleri.txt" doğrultusunda eklenen stiller.
+   Renkleri değiştirmek için aşağıdaki üç değişkeni güncellemeniz yeterli. */
+:root {
+  --kahve: #6F4A36;
+  /* üst etiket (kahverengi) */
+  --yesil: #4E7A62;
+  /* "Beni tanıyın" butonu ve başlıktaki vurgu */
+  --yesil-koyu: #3F6652;
+}
+
+/* 18.1 Karşılama (hero) */
+.ust-baslik--kahve {
+  color: var(--kahve);
+}
+
+.ust-baslik--cizgisiz::before {
+  display: none;
+}
+
+.kahraman__baslik {
+  color: var(--orman);
+}
+
+.kahraman__baslik .vurgu {
+  color: var(--yesil);
+}
+
+.btn--yesil {
+  background: var(--yesil);
+  color: var(--krem);
+  box-shadow: var(--golge-s);
+}
+
+.btn--yesil:hover {
+  background: var(--yesil-koyu);
+  color: var(--krem);
+  box-shadow: var(--golge);
+}
+
+.guven-listesi--hap {
+  gap: .6rem;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.guven-listesi--hap li {
+  padding: .55rem 1.05rem;
+  border-radius: 999px;
+  background: var(--adacayi-acik);
+  color: var(--orman-2);
+  font-weight: 600;
+}
+
+/* 18.2 Çalışma alanları: ızgarayı tamamlayan Ψ parçası */
+.alan-karti--psi {
+  background: var(--orman);
+  border-color: var(--orman);
+  color: var(--krem);
+}
+
+.alan-karti--psi:hover {
+  background: var(--orman-2);
+  border-color: var(--orman-2);
+  color: var(--krem);
+}
+
+.alan-karti--psi h3 {
+  color: var(--krem);
+}
+
+.alan-karti--psi p {
+  color: var(--metin-koyu-zemin-soluk);
+}
+
+.alan-karti--psi .alan-karti__ok {
+  color: var(--kil-acik);
+}
+
+.alan-karti__psi {
+  display: grid;
+  place-items: center;
+  width: 3.1rem;
+  height: 3.1rem;
+  margin-bottom: 1.3rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--krem) 16%, transparent);
+  color: var(--krem);
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  line-height: 1;
+}
+
+/* 18.3 Kısa bir mola: logolu nefes dairesi */
+.nefes__daire {
+  display: grid;
+  place-items: center;
+}
+
+.nefes__logo {
+  width: 44%;
+  height: auto;
+}
+
+.nefes__yazi {
+  min-height: 3.2rem;
+  margin: 0;
+}
+
+/* 18.4 Ön görüşme formu */
+.gonder-ikon {
+  display: inline-flex;
+}
+
+.gonder-ikon[hidden] {
+  display: none;
+}
+
+.yan-kart .ofis__liste {
+  gap: 1rem;
+  margin: 1.2rem 0 1.4rem;
+}
+
+.ofis__liste a {
+  color: var(--metin-soluk);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.ofis__liste a:hover {
+  color: var(--orman);
+  text-decoration: underline;
+}
+
+/* 18.5 Çağrı bandı: fotoğraflı */
+.kirilmaz {
+  white-space: nowrap;
+}
+
+.cagri--fotolu::before,
+.cagri--fotolu::after {
+  display: none;
+}
+
+.cagri--fotolu {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.cagri__foto {
+  width: clamp(180px, 21vw, 250px);
+  aspect-ratio: 4 / 5;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 999px 999px 24px 24px;
+  border: 1.5px solid color-mix(in srgb, var(--kil-acik) 55%, transparent);
+  background: color-mix(in srgb, var(--krem) 14%, transparent);
+}
+
+.cagri__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 18.6 İletişim sayfası başlığı: fotoğraflı */
+.sayfa-bas__ic--fotolu {
+  max-width: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.sayfa-bas__foto {
+  position: relative;
+  isolation: isolate;
+  width: clamp(170px, 21vw, 250px);
+  aspect-ratio: 4 / 5;
+  margin: 0;
+}
+
+.sayfa-bas__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 999px 999px 18px 18px;
+  background: var(--adacayi-acik);
+}
+
+.sayfa-bas__foto::after {
+  content: "";
+  position: absolute;
+  inset: -12px 12px 12px -12px;
+  z-index: -1;
+  border: 1.5px solid color-mix(in srgb, var(--kil) 55%, transparent);
+  border-radius: 999px 999px 18px 18px;
+}
+
+/* 18.7 İletişim kanalları: buton görünümlü bağlantı */
+.kanal__deger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .45rem;
+  align-self: stretch;
+  margin-top: auto;
+  padding: .6rem 1rem;
+  border-radius: 999px;
+  background: var(--orman);
+  color: var(--krem) !important;
+  font-size: .9rem !important;
+  line-height: 1.3;
+  transition: background-color var(--gecis);
+}
+
+.kanal__deger .ikon {
+  flex: none;
+  width: 1em;
+  height: 1em;
+}
+
+a.kanal:hover .kanal__deger {
+  background: var(--orman-2);
+}
+
+@media (max-width: 900px) {
+  .cagri--fotolu {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cagri__foto {
+    order: -1;
+    width: min(46%, 190px);
+  }
+
+  .sayfa-bas__ic--fotolu {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sayfa-bas__foto {
+    width: min(50%, 210px);
+    margin-left: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .guven-listesi--hap li {
+    padding: .5rem .85rem;
+    font-size: .88rem;
+  }
+
+  .alan-karti__psi {
+    grid-row: span 2;
+    width: 2.7rem;
+    height: 2.7rem;
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  .kanal__deger {
+    grid-column: 2;
+    margin-top: .5rem;
+  }
+}

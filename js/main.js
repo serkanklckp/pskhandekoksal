@@ -3,7 +3,7 @@
    --------------------------------------------------------------------------
    Kütüphane kullanılmadan, saf JavaScript ile yazılmıştır.
    Bu dosya olmasa da site çalışır; buradaki kodlar yalnızca deneyimi
-   zenginleştirir (mobil menü, randevu formu, nefes egzersizi vb.).
+   zenginleştirir (mobil menü, ön görüşme formu, nefes egzersizi vb.).
 
    ► Değiştirmeniz gereken tek yer aşağıdaki AYARLAR bölümüdür.
    ========================================================================== */
@@ -11,10 +11,12 @@
 const AYARLAR = {
   // WhatsApp numaranız: başında ülke kodu (90) olacak, boşluk ve + olmadan.
   whatsapp: "905XXXXXXXXX",
-  // Randevu formunun "E-posta ile gönder" seçeneğinin gideceği adres.
+  // SMS için telefon numaranız: başında + ve ülke kodu (90) olacak, boşluksuz.
+  telefon: "+905XXXXXXXXX",
+  // Ön görüşme formunun "E-posta ile gönder" seçeneğinin gideceği adres.
   eposta: "iletisim@alanadiniz.com",
   // E-posta konusu
-  epostaKonu: "Web sitesinden randevu talebi",
+  epostaKonu: "Web sitesinden ön görüşme talebi",
 };
 
 (() => {
@@ -84,6 +86,10 @@ const AYARLAR = {
     });
     d.addEventListener("click", (e) => {
       if (!yuzenPanel.hidden && !e.target.closest(".yuzen")) yuzenKapat();
+    });
+    // Panel içindeki bir bağlantıya (ör. aynı sayfadaki forma) tıklanınca panel kapanır
+    yuzenPanel.addEventListener("click", (e) => {
+      if (e.target.closest("a")) yuzenKapat();
     });
   }
 
@@ -158,10 +164,32 @@ const AYARLAR = {
     });
   }
 
-  /* 6. Randevu talep formu → WhatsApp / e-posta ------------------------- */
-  const form = d.getElementById("randevu-formu");
+  /* 6. Ön görüşme talep formu → WhatsApp / SMS / e-posta ----------------- */
+  const form = d.getElementById("on-gorusme-formu");
   if (form) {
     const durum = form.querySelector(".form-durum");
+    const gonderYazi = form.querySelector("[data-gonder-yazi]");
+    const KANALLAR = {
+      whatsapp: { ad: "WhatsApp", dugme: "WhatsApp ile gönder" },
+      sms: { ad: "Telefon (SMS)", dugme: "SMS ile gönder" },
+      eposta: { ad: "E-posta", dugme: "E-posta ile gönder" },
+    };
+
+    function seciliKanal() {
+      const secili = form.querySelector('input[name="kanal"]:checked');
+      return secili && KANALLAR[secili.value] ? secili.value : "whatsapp";
+    }
+
+    // Gönder butonunun yazısı ve ikonu seçilen kanala göre değişir
+    function dugmeyiGuncelle() {
+      const kanal = seciliKanal();
+      if (gonderYazi) gonderYazi.textContent = KANALLAR[kanal].dugme;
+      form.querySelectorAll("[data-kanal-ikon]").forEach((el) => {
+        el.hidden = el.getAttribute("data-kanal-ikon") !== kanal;
+      });
+    }
+    form.querySelectorAll('input[name="kanal"]').forEach((r) => r.addEventListener("change", dugmeyiGuncelle));
+    dugmeyiGuncelle();
 
     function hataGoster(alan, mesaj) {
       const hata = d.getElementById(alan.id + "-hata");
@@ -185,7 +213,8 @@ const AYARLAR = {
       else hataGoster(tel, "");
 
       const e = eposta.value.trim();
-      if (e && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)) { hataGoster(eposta, "E-posta adresi geçerli görünmüyor."); ilkHatali = ilkHatali || eposta; }
+      if (!e && seciliKanal() === "eposta") { hataGoster(eposta, "E-posta ile iletişim için lütfen e-posta adresinizi yazın."); ilkHatali = ilkHatali || eposta; }
+      else if (e && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)) { hataGoster(eposta, "E-posta adresi geçerli görünmüyor."); ilkHatali = ilkHatali || eposta; }
       else hataGoster(eposta, "");
 
       if (!kvkk.checked) { hataGoster(kvkk, "Devam etmek için aydınlatma metnini okuduğunuzu onaylayın."); ilkHatali = ilkHatali || kvkk; }
@@ -197,42 +226,44 @@ const AYARLAR = {
 
     function mesajOlustur() {
       const f = form.elements;
-      const secili = (ad) => Array.from(form.querySelectorAll(`input[name="${ad}"]:checked`)).map((i) => i.value);
       const satirlar = [
-        "Merhaba, web siteniz üzerinden ön görüşme / randevu talebinde bulunmak istiyorum.",
+        "Merhaba, web siteniz üzerinden ön görüşme talebinde bulunmak istiyorum.",
         "",
         "Ad Soyad: " + f["ad"].value.trim(),
         "Telefon: " + f["telefon"].value.trim(),
       ];
       if (f["eposta"].value.trim()) satirlar.push("E-posta: " + f["eposta"].value.trim());
-      const donus = secili("donus");
-      if (donus.length) satirlar.push("Size nasıl dönüş yapılsın: " + donus.join(", "));
-      const zaman = secili("zaman");
-      if (zaman.length) satirlar.push("Uygun zamanlar: " + zaman.join(", "));
-      if (f["not"].value.trim()) satirlar.push("", "Not: " + f["not"].value.trim());
+      satirlar.push("Tercih ettiğim iletişim kanalı: " + KANALLAR[seciliKanal()].ad);
+      if (f["mesaj"].value.trim()) satirlar.push("", "Mesajım: " + f["mesaj"].value.trim());
       return satirlar.join("\n");
+    }
+
+    function bilgi(html) {
+      durum.innerHTML = '<div class="bilgi-kutusu" role="status"><span aria-hidden="true">✓</span><p>' + html + "</p></div>";
     }
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      // Hangi düğmeye basıldı? (Enter ile gönderimde varsayılan: WhatsApp)
-      const secilenKanal = (e.submitter && e.submitter.getAttribute("data-gonder")) || "whatsapp";
       if (!dogrula()) {
         durum.innerHTML = "";
         return;
       }
+      const kanal = seciliKanal();
       const metin = mesajOlustur();
-      if (secilenKanal === "eposta") {
-        const link = "mailto:" + AYARLAR.eposta +
+      if (kanal === "eposta") {
+        window.location.href = "mailto:" + AYARLAR.eposta +
           "?subject=" + encodeURIComponent(AYARLAR.epostaKonu) +
           "&body=" + encodeURIComponent(metin);
-        window.location.href = link;
-        durum.innerHTML = '<div class="bilgi-kutusu" role="status"><span aria-hidden="true">✓</span><p>E-posta uygulamanız hazır bir mesajla açıldı. <strong>Göndermeyi unutmayın.</strong> Açılmadıysa bize doğrudan <a href="mailto:' + AYARLAR.eposta + '">' + AYARLAR.eposta + "</a> adresinden yazabilirsiniz.</p></div>";
+        bilgi('E-posta uygulamanız hazır bir mesaj taslağıyla açıldı. <strong>Göndermeyi unutmayın.</strong> Açılmadıysa doğrudan <a href="mailto:' + AYARLAR.eposta + '">' + AYARLAR.eposta + "</a> adresine yazabilirsiniz.");
+      } else if (kanal === "sms") {
+        window.location.href = "sms:" + AYARLAR.telefon + "?&body=" + encodeURIComponent(metin);
+        bilgi("SMS uygulamanız hazır bir mesaj taslağıyla açıldı. <strong>Mesajı göndermeyi unutmayın.</strong> Bilgisayardan bağlanıyorsanız SMS uygulaması açılmayabilir; bu durumda WhatsApp ya da e-posta seçeneğini kullanabilirsiniz.");
       } else {
         const link = "https://wa.me/" + AYARLAR.whatsapp + "?text=" + encodeURIComponent(metin);
-        const pencere = window.open(link, "_blank", "noopener");
-        if (!pencere) window.location.href = link;
-        durum.innerHTML = '<div class="bilgi-kutusu" role="status"><span aria-hidden="true">✓</span><p>WhatsApp hazır bir mesajla açıldı. <strong>Mesajı göndermeyi unutmayın.</strong> En kısa sürede size dönüş yapılacaktır.</p></div>';
+        const pencere = window.open(link, "_blank");
+        if (pencere) pencere.opener = null;
+        else window.location.href = link;
+        bilgi("WhatsApp hazır bir mesaj taslağıyla açıldı. <strong>Mesajı göndermeyi unutmayın.</strong> En kısa sürede size dönüş yapılacaktır.");
       }
     });
   }
@@ -269,7 +300,7 @@ const AYARLAR = {
       dugme.textContent = bitti ? "Yeniden başlat" : "Başlat";
       dugme.setAttribute("aria-pressed", "false");
       evreYazi.textContent = bitti ? "Tamamlandı" : "Hazır mısınız?";
-      sayacYazi.textContent = bitti ? "Nasıl hissediyorsunuz?" : "Yaklaşık 1 dakika";
+      sayacYazi.textContent = bitti ? "Nasıl hissediyorsunuz?" : "";
       duyuru.textContent = bitti ? "Egzersiz tamamlandı." : "";
     }
     dugme.addEventListener("click", () => {
