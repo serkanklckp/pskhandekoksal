@@ -3622,7 +3622,6 @@ a.kanal:hover .kanal__deger {
 
 @media (max-width: 640px) {
   .guven-listesi--hap li {
-    padding: .5rem .85rem;
     font-size: .88rem;
   }
 
@@ -3637,5 +3636,256 @@ a.kanal:hover .kanal__deger {
   .kanal__deger {
     grid-column: 2;
     margin-top: .5rem;
+  }
+}
+
+/* 18.8 Üst menü: "Çalışma Alanlarım" açılır menüsü */
+.menu__grup {
+  position: relative;
+}
+
+.menu__acilir {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.menu__acilir .menu__ok {
+  width: 1em;
+  height: 1em;
+  transition: transform var(--gecis);
+}
+
+.menu__grup.acik .menu__ok {
+  transform: rotate(180deg);
+}
+
+.menu__link--aktif {
+  color: var(--orman-2);
+}
+
+.menu__link--aktif::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: .15rem;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--kil);
+  transform: translateX(-50%);
+}
+
+.menu__panel {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  z-index: 60;
+  width: 22rem;
+  padding-top: .55rem;
+  transform: translateX(-50%);
+}
+
+.menu__grup.acik .menu__panel {
+  display: block;
+}
+
+.menu__panel-ic {
+  padding: .6rem;
+  border-radius: var(--r);
+  background: var(--krem);
+  border: 1px solid var(--cizgi);
+  box-shadow: var(--golge-l);
+}
+
+.menu__panel-liste {
+  display: grid;
+  gap: .1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu__panel-liste a {
+  display: block;
+  padding: .6rem .8rem;
+  border-radius: var(--r-s);
+  font-size: .95rem;
+  font-weight: 550;
+  line-height: 1.35;
+  color: var(--metin);
+  text-decoration: none;
+  transition: background-color var(--gecis), color var(--gecis);
+}
+
+.menu__panel-liste a:hover {
+  background: var(--kum-2);
+  color: var(--orman-2);
+}
+
+.menu__panel-liste a[aria-current="page"],
+.menu__panel-tumu[aria-current="page"] {
+  background: color-mix(in srgb, var(--adacayi-acik) 70%, transparent);
+  color: var(--orman-2);
+}
+
+.menu__panel-tumu {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  margin-top: .35rem;
+  padding: .7rem .8rem .45rem;
+  border-top: 1px solid var(--cizgi);
+  border-radius: 0 0 var(--r-s) var(--r-s);
+  font-size: .88rem;
+  font-weight: 650;
+  color: var(--orman);
+  text-decoration: none;
+}
+
+.menu__panel-tumu .ikon {
+  width: 1em;
+  height: 1em;
+}
+
+@media (min-width: 1061px) and (hover: hover) {
+  .menu__grup:hover .menu__panel {
+    display: block;
+  }
+}
+
+@media (max-width: 1060px) {
+  .menu__acilir {
+    width: 100%;
+    justify-content: space-between;
+    text-align: left;
+    border-bottom: 1px solid var(--cizgi);
+  }
+
+  .menu__grup.acik .menu__acilir {
+    border-bottom-color: transparent;
+  }
+
+  .menu__acilir .menu__ok {
+    width: .8em;
+    height: .8em;
+  }
+
+  .menu__link--aktif::after {
+    display: none;
+  }
+
+  .menu__panel {
+    position: static;
+    width: auto;
+    padding-top: 0;
+    transform: none;
+  }
+
+  .menu__panel-ic {
+    padding: .3rem 0 .9rem .9rem;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    border-bottom: 1px solid var(--cizgi);
+  }
+
+  .menu__panel-liste a {
+    padding: .6rem .5rem;
+    font-size: 1.05rem;
+  }
+
+  .menu__panel-tumu {
+    border-top: 0;
+    padding-inline: .5rem;
+  }
+}
+
+/* 18.9 Çalışma alanları ızgarası: 3 sütun (9'lu puzzle) */
+@media (min-width: 1061px) {
+  .alan-izgara--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* 18.10 Alan sayfaları: paragraf aralıkları ve sık sorulan sorular */
+.sayfa-bas .giris+.giris {
+  margin-top: .9rem;
+}
+
+.alan-bolumu>div>p+p {
+  margin-top: .85rem;
+}
+
+/* Alan sayfalarında metinler, Bireysel Danışmanlık sayfasındaki gibi iki yana yaslı */
+.alan-bolumu>div>p,
+.giris--yasli {
+  text-align: justify;
+}
+
+.alan-bolumu>div>h3 {
+  margin-top: 1.4rem;
+}
+
+.alan-bolumu .sss-soru {
+  margin-top: 1.35rem;
+  font-weight: 600;
+  color: var(--kil-koyu);
+}
+
+.alan-bolumu h2+.sss-soru {
+  margin-top: .3rem;
+}
+
+.alan-bolumu .sss-soru+p {
+  margin-top: .35rem;
+}
+
+/* 18.11 Karşılamadaki etiketler bağlantı olarak */
+.guven-listesi--hap li {
+  padding: 0;
+}
+
+.guven-listesi--hap a {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .55rem 1.05rem;
+  border-radius: 999px;
+  color: var(--orman-2);
+  text-decoration: none;
+  transition: background-color var(--gecis);
+}
+
+.guven-listesi--hap a:hover {
+  background: color-mix(in srgb, var(--adacayi) 45%, transparent);
+  color: var(--orman-2);
+}
+
+/* 18.12 Nefes dairesindeki logo */
+.nefes__logo {
+  width: 88%;
+  height: auto;
+  filter: drop-shadow(0 2px 6px rgba(36, 58, 49, .18));
+}
+
+@media (max-width: 640px) {
+  .guven-listesi--hap a {
+    padding: .5rem .85rem;
+  }
+}
+
+/* 18.13 Mobil menü düzeltmesi: üst bardaki bulanıklık (backdrop-filter) sabit
+   konumlu menüyü üst barın içine hapsediyordu; menü açıkken bulanıklık kapatılır. */
+@media (max-width: 1060px) {
+  body.menu-acik .ust {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: var(--kum);
   }
 }

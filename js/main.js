@@ -61,6 +61,33 @@ const AYARLAR = {
     });
   }
 
+  /* 1b. "Çalışma Alanlarım" açılır menüsü -------------------------------- */
+  d.querySelectorAll(".menu__grup").forEach((grup) => {
+    const dugme = grup.querySelector(".menu__acilir");
+    if (!dugme) return;
+    const kapat = () => {
+      grup.classList.remove("acik");
+      dugme.setAttribute("aria-expanded", "false");
+    };
+    dugme.addEventListener("click", () => {
+      const acik = grup.classList.toggle("acik");
+      dugme.setAttribute("aria-expanded", acik ? "true" : "false");
+    });
+    d.addEventListener("click", (e) => {
+      if (!grup.contains(e.target)) kapat();
+    });
+    grup.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && grup.classList.contains("acik")) {
+        kapat();
+        dugme.focus();
+        e.stopPropagation();
+      }
+    });
+    grup.addEventListener("focusout", (e) => {
+      if (e.relatedTarget && !grup.contains(e.relatedTarget)) kapat();
+    });
+  });
+
   /* 2. Yüzen iletişim paneli -------------------------------------------- */
   const yuzenDugme = d.querySelector(".yuzen__dugme");
   const yuzenPanel = d.getElementById("yuzen-panel");
