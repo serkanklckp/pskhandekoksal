@@ -25,6 +25,11 @@
 
 /* 1. TASARIM DEĞİŞKENLERİ ------------------------------------------------ */
 :root {
+  --kahve: #6F4A36;
+  /* üst etiket (kahverengi) */
+  --yesil: #4E7A62;
+  /* "Beni tanıyın" butonu ve başlıktaki vurgu */
+  --yesil-koyu: #3F6652;
   /* Zeminler */
   --kum: #F6F1EA;
   /* ana zemin (sıcak kum) */
@@ -34,7 +39,6 @@
   /* kartlar */
   --adacayi-acik: #DDE6DF;
   /* açık adaçayı zemin */
-
   /* Marka renkleri */
   --orman: #2F4A3F;
   /* ana marka rengi – koyu orman yeşili */
@@ -48,7 +52,6 @@
   /* metinde kullanılacak kil tonu (erişilebilir) */
   --kil-acik: #E8B89E;
   /* koyu zeminde vurgu */
-
   /* Metin */
   --metin: #2E2B26;
   --metin-soluk: #5F5A52;
@@ -3372,16 +3375,11 @@ fieldset.alan {
     padding-block: 1.5rem;
   }
 }
+
 /* 18. REVİZYON · EKİM 2026 ------------------------------------------------
    A4 notları ve "Site metinleri.txt" doğrultusunda eklenen stiller.
    Renkleri değiştirmek için aşağıdaki üç değişkeni güncellemeniz yeterli. */
-:root {
-  --kahve: #6F4A36;
-  /* üst etiket (kahverengi) */
-  --yesil: #4E7A62;
-  /* "Beni tanıyın" butonu ve başlıktaki vurgu */
-  --yesil-koyu: #3F6652;
-}
+
 
 /* 18.1 Karşılama (hero) */
 .ust-baslik--kahve {
@@ -3903,15 +3901,9 @@ a.kanal:hover .kanal__deger {
   }
 }
 
-/* 18.15 Karşılama görseli: kemerin içinde logo */
+/* 18.15 Karşılama görseli: arka plansız logo ("Bir nefes alın" kartı altında) */
 .kahraman__logo {
-  display: grid;
-  place-items: center;
-  aspect-ratio: 4 / 5;
-  padding: 12% 9% 27%;
-  border-radius: 999px 999px 26px 26px;
-  background: linear-gradient(180deg, var(--krem) 0%, #F1F3EE 50%, var(--adacayi-acik) 100%);
-  filter: drop-shadow(0 30px 40px rgba(47, 74, 63, .16));
+  padding-bottom: 4.2rem;
 }
 
 .kahraman__logo img {
@@ -3919,12 +3911,9 @@ a.kanal:hover .kanal__deger {
   height: auto;
 }
 
-@media (max-width: 640px) {
-
-  /* "Bir nefes alın" kartı ağacın köklerini örtmesin */
-  .kahraman__logo {
-    padding: 11% 13% 35%;
-  }
+.kahraman__gorsel .nefes-karti {
+  left: -1rem;
+  bottom: 0;
 }
 
 /* 18.16 Psikolojik Değerlendirme Çalışmaları + Danışmanlık Seçenekleri */
@@ -4059,5 +4048,79 @@ a.kanal:hover .kanal__deger {
 @media (max-width: 1239px) {
   .menu__kir {
     display: none;
+  }
+}
+
+/* 18.18 Dördüncü tur (4 Ekim 2026) */
+/* Logonun yanındaki yazı: ad orman-2, unvan koyu kil */
+.logo__ad {
+  color: var(--orman-2);
+}
+
+.logo__unvan {
+  color: var(--kil-koyu);
+}
+
+/* Karşılama üst etiketi: "Klinik Psikolog" koyu kil (varsayılan), "Başiskele, Kocaeli" kil */
+.ust-baslik--cizgisiz {
+  display: block;
+}
+
+.ust-baslik__yer {
+  color: var(--kil);
+}
+
+/* Karşılama açıklaması yeşil */
+.giris--yesil {
+  color: var(--yesil);
+}
+
+/* Etiketlerdeki ikonlar biraz daha büyük (karşılıklı iki yüz ikonu okunaklı olsun) */
+.guven-listesi--hap .ikon {
+  width: 1.3em;
+  height: 1.3em;
+}
+
+/* Kısa bir mola: renkler içten dışa açıktan koyuya */
+.nefes__halka {
+  background: radial-gradient(circle closest-side, #E4ECE6 0%, #CBD9CF 62%, #A9BFB1 100%);
+}
+
+.nefes__daire {
+  background: radial-gradient(circle closest-side, #FFFFFF 0%, #F6F9F5 58%, #E3EBE5 100%);
+  box-shadow: 0 0 0 1px rgba(47, 74, 63, .06), 0 10px 24px -8px rgba(36, 58, 49, .28);
+}
+
+/* Çalışma alanları ızgarası: 8 alan + Ψ (9'lu puzzle, 3 × 3) */
+@media (min-width: 1061px) {
+  .alan-izgara--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Alan sayfaları: listeden sonraki açıklama */
+.alan-bolumu .alan-bolumu__not {
+  margin-top: 1.1rem;
+}
+
+/* Psikolojik Değerlendirme sayfası: "Testler ve Ölçekler" ara başlığı ve test başlıkları */
+.alan-detay__baslik {
+  margin-bottom: 1.2rem;
+  font-size: clamp(1.6rem, 1.3rem + 1.1vw, 2.2rem);
+}
+
+.alan-bolumu .alan-bolumu__baslik {
+  margin: 0 0 .7rem;
+  font-family: var(--font-serif);
+  font-size: clamp(1.45rem, 1.2rem + .9vw, 1.9rem);
+  font-weight: 500;
+  letter-spacing: -.012em;
+  color: var(--orman-2);
+}
+
+/* Menü: iki satıra bölünen düz bağlantı da açılır menü başlıkları gibi sıkı satır aralığıyla */
+@media (min-width: 1240px) {
+  .menu__liste .menu__link {
+    line-height: 1.2;
   }
 }

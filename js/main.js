@@ -61,7 +61,7 @@ const AYARLAR = {
     });
   }
 
-  /* 1b. Açılır menüler (Çalışma Alanlarım, Psikolojik Değerlendirme, Danışmanlık Seçenekleri) */
+  /* 1b. Açılır menüler (Çalışma Alanlarım, Danışmanlık Seçenekleri) */
   const masaustuMenu = window.matchMedia("(min-width: 1240px)");
   d.querySelectorAll(".menu__grup").forEach((grup) => {
     const dugme = grup.querySelector(".menu__acilir");
@@ -349,6 +349,17 @@ const AYARLAR = {
       }, 1000);
     });
   }
+
+  /* 7b. SSS: adresteki #bağlantı bir soruyu gösteriyorsa o soru açılır (ör. sss.html#gizlilik) */
+  const soruyuAc = () => {
+    const kimlik = decodeURIComponent(window.location.hash.slice(1));
+    if (!kimlik) return;
+    const hedef = d.getElementById(kimlik);
+    const soru = hedef && hedef.closest("details");
+    if (soru) soru.open = true;
+  };
+  soruyuAc();
+  window.addEventListener("hashchange", soruyuAc);
 
   /* 8. Alt bilgideki yıl ------------------------------------------------ */
   d.querySelectorAll("[data-yil]").forEach((el) => { el.textContent = String(new Date().getFullYear()); });
