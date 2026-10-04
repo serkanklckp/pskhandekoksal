@@ -28,8 +28,10 @@
   --kahve: #6F4A36;
   /* üst etiket (kahverengi) */
   --yesil: #4E7A62;
-  /* "Beni tanıyın" butonu ve başlıktaki vurgu */
+  /* orta yeşil */
   --yesil-koyu: #3F6652;
+  --yesil-acik: #E4EFE7;
+  /* açık yeşil (karşılama etiketleri) */
   /* Zeminler */
   --kum: #F6F1EA;
   /* ana zemin (sıcak kum) */
@@ -200,7 +202,7 @@ h4 {
   font-weight: 500;
   line-height: 1.15;
   letter-spacing: -.012em;
-  color: var(--orman-2);
+  color: var(--orman);
   text-wrap: balance;
 }
 
@@ -227,11 +229,12 @@ p {
   text-wrap: pretty;
 }
 
+/* Başlıklardaki vurgulu kelime: yalnızca italik, renk başlıkla aynı */
 .vurgu {
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 500;
-  color: var(--kil-koyu);
+  color: inherit;
 }
 
 .ust-baslik {
@@ -259,7 +262,7 @@ p {
   /* başlık altı açıklama (lead) */
   font-size: clamp(1.08rem, 1rem + .35vw, 1.24rem);
   line-height: 1.65;
-  color: var(--metin-soluk);
+  color: var(--orman);
 }
 
 #text-location {
@@ -1074,17 +1077,6 @@ a:hover {
   color: var(--metin);
 }
 
-.alan-karti__ikon {
-  display: grid;
-  place-items: center;
-  width: 3.1rem;
-  height: 3.1rem;
-  margin-bottom: 1.3rem;
-  border-radius: 50%;
-  background: var(--adacayi-acik);
-  color: var(--orman);
-}
-
 .alan-karti h3 {
   margin-bottom: .55rem;
   font-size: 1.2rem;
@@ -1655,10 +1647,6 @@ a:hover {
   margin-bottom: 1.1rem;
 }
 
-.cagri .vurgu {
-  color: var(--kil-acik);
-}
-
 .cagri p {
   max-width: 40rem;
   color: var(--metin-koyu-zemin-soluk);
@@ -2020,17 +2008,6 @@ a:hover {
   color: var(--metin-soluk);
 }
 
-.kart__ikon {
-  display: grid;
-  place-items: center;
-  width: 2.6rem;
-  height: 2.6rem;
-  margin-bottom: 1rem;
-  border-radius: 50%;
-  background: var(--adacayi-acik);
-  color: var(--orman);
-}
-
 /* Çalışma alanları sayfası */
 .alan-detay {
   display: grid;
@@ -2041,22 +2018,12 @@ a:hover {
 .alan-bolumu {
   scroll-margin-top: calc(var(--header-h) + 1.5rem);
   display: grid;
-  grid-template-columns: 4rem minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 1.5rem;
   padding: clamp(1.5rem, 3.5vw, 2.4rem);
   border-radius: var(--r-l);
   background: var(--krem);
   border: 1px solid var(--cizgi);
-}
-
-.alan-bolumu__ikon {
-  display: grid;
-  place-items: center;
-  width: 3.4rem;
-  height: 3.4rem;
-  border-radius: 50%;
-  background: var(--adacayi-acik);
-  color: var(--orman);
 }
 
 .alan-bolumu h2 {
@@ -2080,7 +2047,7 @@ a:hover {
   font-family: var(--font-sans);
   font-weight: 700;
   letter-spacing: .02em;
-  color: var(--orman-2);
+  color: var(--orman);
   margin-bottom: .6rem;
 }
 
@@ -2249,17 +2216,6 @@ a.kanal:hover {
   color: var(--metin);
 }
 
-.kanal .kanal__ikon {
-  display: grid;
-  place-items: center;
-  width: 2.8rem;
-  height: 2.8rem;
-  margin-bottom: .6rem;
-  border-radius: 50%;
-  background: var(--orman);
-  color: var(--krem);
-}
-
 .kanal strong {
   font-family: var(--font-serif);
   font-size: 1.18rem;
@@ -2420,7 +2376,7 @@ a.kanal:hover {
   font-family: var(--font-sans);
   font-weight: 700;
   margin: 0 0 .8rem !important;
-  color: var(--orman-2);
+  color: var(--orman);
 }
 
 .kaynaklar ol {
@@ -2934,7 +2890,7 @@ fieldset.alan {
   padding: .6rem .8rem .5rem;
   font-family: var(--font-serif);
   font-size: 1.05rem;
-  color: var(--orman-2);
+  color: var(--orman);
 }
 
 .yuzen__panel ul {
@@ -3207,17 +3163,7 @@ fieldset.alan {
 
   /* Mobilde daha derli toplu kartlar */
   .alan-karti {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    column-gap: 1rem;
     padding: 1.2rem 1.25rem;
-  }
-
-  .alan-karti__ikon {
-    grid-row: span 2;
-    width: 2.7rem;
-    height: 2.7rem;
-    margin: 0;
   }
 
   .alan-karti h3 {
@@ -3272,16 +3218,8 @@ fieldset.alan {
   }
 
   .kanal {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    column-gap: 1rem;
-    row-gap: .15rem;
+    gap: .35rem;
     padding: 1.15rem 1.2rem;
-  }
-
-  .kanal .kanal__ikon {
-    grid-row: span 3;
-    margin: 0;
   }
 
   .kanal__deger {
@@ -3394,10 +3332,6 @@ fieldset.alan {
   color: var(--orman);
 }
 
-.kahraman__baslik .vurgu {
-  color: var(--yesil);
-}
-
 .btn--yesil {
   background: var(--yesil);
   color: var(--krem);
@@ -3419,49 +3353,12 @@ fieldset.alan {
 .guven-listesi--hap li {
   padding: .55rem 1.05rem;
   border-radius: 999px;
-  background: var(--adacayi-acik);
-  color: var(--orman-2);
+  background: var(--yesil-acik);
+  color: var(--yesil-koyu);
   font-weight: 600;
 }
 
-/* 18.2 Çalışma alanları: ızgarayı tamamlayan Ψ parçası */
-.alan-karti--psi {
-  background: var(--orman);
-  border-color: var(--orman);
-  color: var(--krem);
-}
-
-.alan-karti--psi:hover {
-  background: var(--orman-2);
-  border-color: var(--orman-2);
-  color: var(--krem);
-}
-
-.alan-karti--psi h3 {
-  color: var(--krem);
-}
-
-.alan-karti--psi p {
-  color: var(--metin-koyu-zemin-soluk);
-}
-
-.alan-karti--psi .alan-karti__ok {
-  color: var(--kil-acik);
-}
-
-.alan-karti__psi {
-  display: grid;
-  place-items: center;
-  width: 3.1rem;
-  height: 3.1rem;
-  margin-bottom: 1.3rem;
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--krem) 16%, transparent);
-  color: var(--krem);
-  font-family: var(--font-serif);
-  font-size: 1.85rem;
-  line-height: 1;
-}
+/* 18.2 (kaldırıldı: Ψ kartı yerine 18.19 yapbozu) */
 
 /* 18.3 Kısa bir mola: logolu nefes dairesi */
 .nefes__daire {
@@ -3848,14 +3745,14 @@ a.kanal:hover .kanal__deger {
   gap: .5rem;
   padding: .55rem 1.05rem;
   border-radius: 999px;
-  color: var(--orman-2);
+  color: var(--yesil-koyu);
   text-decoration: none;
   transition: background-color var(--gecis);
 }
 
 .guven-listesi--hap a:hover {
-  background: color-mix(in srgb, var(--adacayi) 45%, transparent);
-  color: var(--orman-2);
+  background: #D3E4D8;
+  color: var(--yesil-koyu);
 }
 
 /* 18.12 Nefes dairesindeki logo */
@@ -3901,19 +3798,28 @@ a.kanal:hover .kanal__deger {
   }
 }
 
-/* 18.15 Karşılama görseli: arka plansız logo ("Bir nefes alın" kartı altında) */
+/* 18.15 Karşılama görseli: arka plansız logo; "Bir nefes alın" kartı logonun altında, köklerin tam ortasında */
+.kahraman__gorsel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .kahraman__logo {
-  padding-bottom: 4.2rem;
+  width: 100%;
 }
 
 .kahraman__logo img {
+  display: block;
   width: 100%;
   height: auto;
 }
 
 .kahraman__gorsel .nefes-karti {
-  left: -1rem;
-  bottom: 0;
+  position: relative;
+  left: auto;
+  bottom: auto;
+  margin-top: .35rem;
 }
 
 /* 18.16 Psikolojik Değerlendirme Çalışmaları + Danışmanlık Seçenekleri */
@@ -3946,7 +3852,7 @@ a.kanal:hover .kanal__deger {
   margin-bottom: 1.1rem;
   font-size: clamp(1.2rem, 1.8vw, 1.4rem);
   line-height: 1.3;
-  color: var(--orman-2);
+  color: var(--orman);
 }
 
 .hizmet-grubu__liste {
@@ -4052,33 +3958,18 @@ a.kanal:hover .kanal__deger {
 }
 
 /* 18.18 Dördüncü tur (4 Ekim 2026) */
-/* Logonun yanındaki yazı: ad orman-2, unvan koyu kil */
+/* Logonun yanındaki yazı: ad orman, unvan koyu kil */
 .logo__ad {
-  color: var(--orman-2);
+  color: var(--orman);
 }
 
 .logo__unvan {
   color: var(--kil-koyu);
 }
 
-/* Karşılama üst etiketi: "Klinik Psikolog" koyu kil (varsayılan), "Başiskele, Kocaeli" kil */
+/* Karşılama üst etiketi: "Klinik Psikolog · Başiskele, Kocaeli" tamamen koyu kil (varsayılan renk) */
 .ust-baslik--cizgisiz {
   display: block;
-}
-
-.ust-baslik__yer {
-  color: var(--kil);
-}
-
-/* Karşılama açıklaması yeşil */
-.giris--yesil {
-  color: var(--yesil);
-}
-
-/* Etiketlerdeki ikonlar biraz daha büyük (karşılıklı iki yüz ikonu okunaklı olsun) */
-.guven-listesi--hap .ikon {
-  width: 1.3em;
-  height: 1.3em;
 }
 
 /* Kısa bir mola: renkler içten dışa açıktan koyuya */
@@ -4089,13 +3980,6 @@ a.kanal:hover .kanal__deger {
 .nefes__daire {
   background: radial-gradient(circle closest-side, #FFFFFF 0%, #F6F9F5 58%, #E3EBE5 100%);
   box-shadow: 0 0 0 1px rgba(47, 74, 63, .06), 0 10px 24px -8px rgba(36, 58, 49, .28);
-}
-
-/* Çalışma alanları ızgarası: 8 alan + Ψ (9'lu puzzle, 3 × 3) */
-@media (min-width: 1061px) {
-  .alan-izgara--3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
 }
 
 /* Alan sayfaları: listeden sonraki açıklama */
@@ -4115,7 +3999,7 @@ a.kanal:hover .kanal__deger {
   font-size: clamp(1.45rem, 1.2rem + .9vw, 1.9rem);
   font-weight: 500;
   letter-spacing: -.012em;
-  color: var(--orman-2);
+  color: var(--orman);
 }
 
 /* Menü: iki satıra bölünen düz bağlantı da açılır menü başlıkları gibi sıkı satır aralığıyla */
@@ -4123,4 +4007,124 @@ a.kanal:hover .kanal__deger {
   .menu__liste .menu__link {
     line-height: 1.2;
   }
+}
+
+/* 18.19 Çalışma alanları yapbozu: 8 parça bir araya gelince Ψ (psikoloji simgesi) oluşur
+   Geniş ekranda 4 × 2, 899px ve altında 2 × 4. Parçalar sayfa kaydırıldığında dağınık hâlden yerine oturur. */
+.yapboz {
+  --yapboz-zemin: var(--krem);
+  --yapboz-zemin-hover: #EEF4EF;
+  --yapboz-cizgi: var(--cizgi-koyu);
+}
+
+.yapboz__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 22px 36px rgba(47, 74, 63, .12));
+}
+
+.yapboz__svg--dar {
+  display: none;
+  max-width: 460px;
+  margin-inline: auto;
+}
+
+@media (max-width: 899px) {
+  .yapboz__svg--genis {
+    display: none;
+  }
+
+  .yapboz__svg--dar {
+    display: block;
+  }
+}
+
+.yapboz__parca {
+  cursor: pointer;
+  text-decoration: none;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform .35s cubic-bezier(.2, .7, .2, 1);
+}
+
+.yapboz__zemin {
+  fill: var(--yapboz-zemin);
+  transition: fill .25s;
+}
+
+.yapboz__kenar {
+  fill: none;
+  stroke: var(--yapboz-cizgi);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+  transition: stroke .25s;
+}
+
+.yapboz__psi path {
+  fill: none;
+  stroke-width: 46;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.yapboz__no {
+  font: 650 15px/1 var(--font-sans);
+  letter-spacing: .16em;
+  fill: var(--kil-koyu);
+}
+
+.yapboz__ad {
+  font: 500 22px/1 var(--font-serif);
+  letter-spacing: -.005em;
+  fill: var(--orman);
+  transition: fill .25s;
+}
+
+.yapboz__svg--dar .yapboz__no {
+  font-size: 19px;
+}
+
+.yapboz__svg--dar .yapboz__ad {
+  font-size: 27px;
+}
+
+.yapboz__parca:hover,
+.yapboz__parca:focus-visible {
+  transform: translate(-3px, -4px);
+  outline: none;
+}
+
+.yapboz__parca:hover .yapboz__zemin,
+.yapboz__parca:focus-visible .yapboz__zemin {
+  fill: var(--yapboz-zemin-hover);
+}
+
+.yapboz__parca:hover .yapboz__kenar {
+  stroke: var(--adacayi);
+}
+
+.yapboz__parca:focus-visible .yapboz__kenar {
+  stroke: var(--kil);
+  stroke-width: 3;
+}
+
+/* Montaj: kapsayıcı görünür kalır, parçalar dağınık başlar ve sırayla yerine oturur */
+.yapboz.bekliyor {
+  opacity: 1;
+  transform: none;
+}
+
+.yapboz.bekliyor .yapboz__parca {
+  opacity: 0;
+  transform: translate(var(--dx), var(--dy)) rotate(var(--r));
+}
+
+.yapboz.beliriyor .yapboz__parca {
+  transition: transform .9s cubic-bezier(.2, .7, .2, 1) var(--gecikme), opacity .6s ease var(--gecikme);
+}
+
+.yapboz.yapboz--tamam .yapboz__parca {
+  transition: transform .35s cubic-bezier(.2, .7, .2, 1);
 }

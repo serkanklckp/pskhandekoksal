@@ -168,6 +168,22 @@ const AYARLAR = {
     });
   }
 
+  /* 4b. Çalışma alanları yapbozu: parçalar yerine oturunca üzerine gelme efekti gecikmesiz çalışır */
+  d.querySelectorAll("[data-yapboz]").forEach((yapboz) => {
+    const tamamla = () => yapboz.classList.add("yapboz--tamam");
+    if (!yapboz.classList.contains("bekliyor")) {
+      tamamla();
+      return;
+    }
+    const izleyici = new MutationObserver(() => {
+      if (!yapboz.classList.contains("bekliyor")) {
+        izleyici.disconnect();
+        window.setTimeout(tamamla, 1500);
+      }
+    });
+    izleyici.observe(yapboz, { attributes: true, attributeFilter: ["class"] });
+  });
+
   /* 5. Harita: yalnızca kullanıcı isterse yüklenir (gizlilik) ----------- */
   d.querySelectorAll("[data-harita-yukle]").forEach((dugme) => {
     dugme.addEventListener("click", () => {
