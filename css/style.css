@@ -694,7 +694,7 @@ a:hover {
   display: block;
 }
 
-@media (max-width: 1060px) {
+@media (max-width: 1239px) {
   .menu-dugme {
     display: inline-flex;
   }
@@ -3752,13 +3752,13 @@ a.kanal:hover .kanal__deger {
   height: 1em;
 }
 
-@media (min-width: 1061px) and (hover: hover) {
+@media (min-width: 1240px) and (hover: hover) {
   .menu__grup:hover .menu__panel {
     display: block;
   }
 }
 
-@media (max-width: 1060px) {
+@media (max-width: 1239px) {
   .menu__acilir {
     width: 100%;
     justify-content: space-between;
@@ -3803,13 +3803,6 @@ a.kanal:hover .kanal__deger {
   .menu__panel-tumu {
     border-top: 0;
     padding-inline: .5rem;
-  }
-}
-
-/* 18.9 Çalışma alanları ızgarası: 3 sütun (9'lu puzzle) */
-@media (min-width: 1061px) {
-  .alan-izgara--3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -3881,11 +3874,190 @@ a.kanal:hover .kanal__deger {
 }
 
 /* 18.13 Mobil menü düzeltmesi: üst bardaki bulanıklık (backdrop-filter) sabit
-   konumlu menüyü üst barın içine hapsediyordu; menü açıkken bulanıklık kapatılır. */
-@media (max-width: 1060px) {
+   konumlu menüyü üst barın içine hapsediyordu; menü açıkken bulanıklık kapatılır.
+   Not: Mobil menü sınırı 1239px'tir (3 açılır menüyle birlikte; bkz. 18.17). */
+@media (max-width: 1239px) {
   body.menu-acik .ust {
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
     background: var(--kum);
+  }
+}
+
+/* 18.14 Logo (ağaç): üst menü ve alt bilgi */
+.logo__isaret {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+}
+
+.alt .logo__isaret {
+  width: 66px;
+  height: 66px;
+}
+
+@media (max-width: 640px) {
+  .ust .logo__isaret {
+    width: 46px;
+    height: 46px;
+  }
+}
+
+/* 18.15 Karşılama görseli: kemerin içinde logo */
+.kahraman__logo {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 5;
+  padding: 12% 9% 27%;
+  border-radius: 999px 999px 26px 26px;
+  background: linear-gradient(180deg, var(--krem) 0%, #F1F3EE 50%, var(--adacayi-acik) 100%);
+  filter: drop-shadow(0 30px 40px rgba(47, 74, 63, .16));
+}
+
+.kahraman__logo img {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 640px) {
+
+  /* "Bir nefes alın" kartı ağacın köklerini örtmesin */
+  .kahraman__logo {
+    padding: 11% 13% 35%;
+  }
+}
+
+/* 18.16 Psikolojik Değerlendirme Çalışmaları + Danışmanlık Seçenekleri */
+.bolum--alt-az {
+  padding-bottom: clamp(2.5rem, 4.5vw, 3.5rem);
+}
+
+.hizmet-gruplari {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: auto auto;
+  gap: 0 1.1rem;
+}
+
+.hizmet-grubu {
+  display: grid;
+  grid-row: span 2;
+  grid-template-rows: subgrid;
+  row-gap: 0;
+  padding: clamp(1.25rem, 2.2vw, 1.75rem);
+  border-radius: var(--r-l);
+  background: var(--kum-2);
+}
+
+.hizmet-grubu--genis {
+  grid-column: span 2;
+}
+
+.hizmet-grubu__baslik {
+  margin-bottom: 1.1rem;
+  font-size: clamp(1.2rem, 1.8vw, 1.4rem);
+  line-height: 1.3;
+  color: var(--orman-2);
+}
+
+.hizmet-grubu__liste {
+  display: grid;
+  gap: 1.1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hizmet-grubu--genis .hizmet-grubu__liste {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Yüz Yüze Danışmanlık: iletişim bilgileri kartı */
+.yan-kart--genis {
+  align-self: start;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.yan-kart--genis h2 {
+  font-size: 1.45rem;
+}
+
+@media (max-width: 1060px) {
+  .hizmet-gruplari {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    gap: 1.1rem;
+  }
+
+  .hizmet-grubu {
+    grid-row: auto;
+    grid-template-rows: none;
+  }
+
+  .hizmet-grubu--genis {
+    grid-column: auto;
+  }
+
+  .hizmet-grubu__liste {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .hizmet-gruplari {
+    gap: 1rem;
+  }
+
+  .hizmet-grubu {
+    padding: 1rem;
+    border-radius: var(--r);
+  }
+
+  .hizmet-grubu__liste,
+  .hizmet-grubu--genis .hizmet-grubu__liste {
+    grid-template-columns: minmax(0, 1fr);
+    gap: .75rem;
+  }
+}
+
+/* 18.17 Üst menü: üç açılır menü
+   1440px ve üzeri: tek satır (üst bar sayfa içeriğinden biraz daha geniş)
+   1240–1439px: uzun başlıklar iki satır ("menu__kir" satır sonu)
+   1239px ve altı: mobil menü (bu sınır js/main.js'te de kullanılıyor) */
+@media (min-width: 1240px) {
+  .menu__liste {
+    align-items: center;
+    gap: .1rem;
+  }
+
+  .menu__link {
+    padding: .5rem .6rem;
+    font-size: .92rem;
+    white-space: nowrap;
+  }
+
+  .menu__acilir {
+    text-align: left;
+    line-height: 1.2;
+  }
+
+  .menu__cta {
+    margin-left: .6rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .ust__ic {
+    width: min(100% - 2 * var(--kenar), 1380px);
+  }
+
+  .menu__kir {
+    display: none;
+  }
+}
+
+@media (max-width: 1239px) {
+  .menu__kir {
+    display: none;
   }
 }

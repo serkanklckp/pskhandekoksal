@@ -57,11 +57,12 @@ const AYARLAR = {
       if (e.target.closest("a")) menuyuKapat();
     });
     window.addEventListener("resize", () => {
-      if (window.innerWidth > 1060) menuyuKapat();
+      if (window.innerWidth > 1239) menuyuKapat(); // css/style.css → 18.17 ile aynı sınır
     });
   }
 
-  /* 1b. "Çalışma Alanlarım" açılır menüsü -------------------------------- */
+  /* 1b. Açılır menüler (Çalışma Alanlarım, Psikolojik Değerlendirme, Danışmanlık Seçenekleri) */
+  const masaustuMenu = window.matchMedia("(min-width: 1240px)");
   d.querySelectorAll(".menu__grup").forEach((grup) => {
     const dugme = grup.querySelector(".menu__acilir");
     if (!dugme) return;
@@ -83,8 +84,10 @@ const AYARLAR = {
         e.stopPropagation();
       }
     });
+    // Masaüstünde odak menüden çıkınca kapanır. Mobil menüde (akordeon) bu yapılmaz:
+    // açık bir grubun kapanması sayfayı kaydırıp bir sonraki dokunuşu boşa çıkarıyordu.
     grup.addEventListener("focusout", (e) => {
-      if (e.relatedTarget && !grup.contains(e.relatedTarget)) kapat();
+      if (masaustuMenu.matches && e.relatedTarget && !grup.contains(e.relatedTarget)) kapat();
     });
   });
 
