@@ -229,11 +229,9 @@ p {
   text-wrap: pretty;
 }
 
-/* Başlıklardaki vurgulu kelime: yalnızca italik, renk başlıkla aynı */
+/* Başlıklardaki vurgulu kelime: başlığın geri kalanıyla aynı (düz, aynı renk) */
 .vurgu {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 500;
+  font: inherit;
   color: inherit;
 }
 
@@ -265,9 +263,15 @@ p {
   color: var(--orman);
 }
 
-#text-location {
+.text-location {
   text-align: justify;
   margin-bottom: 0.5rem;
+}
+
+/* Bireysel Danışmanlık sık sorulan soruları (eski satır içi stil: koyu kil, kalın) */
+.alan-bolumu .bireysel-soru {
+  color: var(--kil-koyu);
+  font-weight: 600;
 }
 
 .kucuk {
@@ -4010,6 +4014,7 @@ a.kanal:hover .kanal__deger {
 }
 
 /* 18.19 Çalışma alanları yapbozu: 8 parça bir araya gelince Ψ (psikoloji simgesi) oluşur
+   Ψ, klasik serif Ψ harfidir (FreeSerif: kıvrımlı kollar, çentikli uçlar); opaklığı %70.
    Geniş ekranda 4 × 2, 899px ve altında 2 × 4. Parçalar sayfa kaydırıldığında dağınık hâlden yerine oturur. */
 .yapboz {
   --yapboz-zemin: var(--krem);
@@ -4062,28 +4067,20 @@ a.kanal:hover .kanal__deger {
   transition: stroke .25s;
 }
 
-.yapboz__psi path {
-  fill: none;
-  stroke-width: 46;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.yapboz__no {
-  font: 650 15px/1 var(--font-sans);
-  letter-spacing: .16em;
-  fill: var(--kil-koyu);
+.yapboz__psi {
+  opacity: .7;
 }
 
 .yapboz__ad {
   font: 500 22px/1 var(--font-serif);
   letter-spacing: -.005em;
   fill: var(--orman);
-  transition: fill .25s;
-}
-
-.yapboz__svg--dar .yapboz__no {
-  font-size: 19px;
+  /* Ψ'ye yaklaşan harflerin çevresinde parça zemini renginde ince hare */
+  paint-order: stroke;
+  stroke: var(--yapboz-zemin);
+  stroke-width: 7px;
+  stroke-linejoin: round;
+  transition: fill .25s, stroke .25s;
 }
 
 .yapboz__svg--dar .yapboz__ad {
@@ -4099,6 +4096,11 @@ a.kanal:hover .kanal__deger {
 .yapboz__parca:hover .yapboz__zemin,
 .yapboz__parca:focus-visible .yapboz__zemin {
   fill: var(--yapboz-zemin-hover);
+}
+
+.yapboz__parca:hover .yapboz__ad,
+.yapboz__parca:focus-visible .yapboz__ad {
+  stroke: var(--yapboz-zemin-hover);
 }
 
 .yapboz__parca:hover .yapboz__kenar {
@@ -4127,4 +4129,240 @@ a.kanal:hover .kanal__deger {
 
 .yapboz.yapboz--tamam .yapboz__parca {
   transition: transform .35s cubic-bezier(.2, .7, .2, 1);
+}
+
+/* Parçaların dağınık başlangıç konumları ve gecikmeleri (satır içi style yerine burada) */
+.yapboz__svg--genis .yapboz__parca:nth-of-type(1) {
+  --dx: -39px;
+  --dy: -15px;
+  --r: 4deg;
+  --gecikme: 0ms;
+}
+
+.yapboz__svg--genis .yapboz__parca:nth-of-type(2) {
+  --dx: -13px;
+  --dy: -15px;
+  --r: -4deg;
+  --gecikme: 70ms;
+}
+
+.yapboz__svg--genis .yapboz__parca:nth-of-type(3) {
+  --dx: 13px;
+  --dy: -15px;
+  --r: 4deg;
+  --gecikme: 140ms;
+}
+
+.yapboz__svg--genis .yapboz__parca:nth-of-type(4) {
+  --dx: 39px;
+  --dy: -15px;
+  --r: -4deg;
+  --gecikme: 210ms;
+}
+
+.yapboz__svg--genis .yapboz__parca:nth-of-type(5) {
+  --dx: -39px;
+  --dy: 15px;
+  --r: 4deg;
+  --gecikme: 280ms;
+}
+
+.yapboz__svg--genis .yapboz__parca:nth-of-type(6) {
+  --dx: -13px;
+  --dy: 15px;
+  --r: -4deg;
+  --gecikme: 350ms;
+}
+
+.yapboz__svg--genis .yapboz__parca:nth-of-type(7) {
+  --dx: 13px;
+  --dy: 15px;
+  --r: 4deg;
+  --gecikme: 420ms;
+}
+
+.yapboz__svg--genis .yapboz__parca:nth-of-type(8) {
+  --dx: 39px;
+  --dy: 15px;
+  --r: -4deg;
+  --gecikme: 490ms;
+}
+
+.yapboz__svg--dar .yapboz__parca:nth-of-type(1) {
+  --dx: -13px;
+  --dy: -45px;
+  --r: 4deg;
+  --gecikme: 0ms;
+}
+
+.yapboz__svg--dar .yapboz__parca:nth-of-type(2) {
+  --dx: 13px;
+  --dy: -45px;
+  --r: -4deg;
+  --gecikme: 70ms;
+}
+
+.yapboz__svg--dar .yapboz__parca:nth-of-type(3) {
+  --dx: -13px;
+  --dy: -15px;
+  --r: 4deg;
+  --gecikme: 140ms;
+}
+
+.yapboz__svg--dar .yapboz__parca:nth-of-type(4) {
+  --dx: 13px;
+  --dy: -15px;
+  --r: -4deg;
+  --gecikme: 210ms;
+}
+
+.yapboz__svg--dar .yapboz__parca:nth-of-type(5) {
+  --dx: -13px;
+  --dy: 15px;
+  --r: 4deg;
+  --gecikme: 280ms;
+}
+
+.yapboz__svg--dar .yapboz__parca:nth-of-type(6) {
+  --dx: 13px;
+  --dy: 15px;
+  --r: -4deg;
+  --gecikme: 350ms;
+}
+
+.yapboz__svg--dar .yapboz__parca:nth-of-type(7) {
+  --dx: -13px;
+  --dy: 45px;
+  --r: 4deg;
+  --gecikme: 420ms;
+}
+
+.yapboz__svg--dar .yapboz__parca:nth-of-type(8) {
+  --dx: 13px;
+  --dy: 45px;
+  --r: -4deg;
+  --gecikme: 490ms;
+}
+
+/* 18.20 Ben Kimim? sayfaları: Hakkımda, Hikâyem, Vizyonum Ve Misyonum, Terapi Anlayışım, Danışmanlık Merkezim */
+/* Hakkımda: başlığın yanında daire fotoğraflı profil kartı */
+.sayfa-bas--profil .kap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+}
+
+.profil-kart {
+  margin: 0;
+  text-align: center;
+}
+
+.profil-kart__foto {
+  position: relative;
+  width: clamp(12rem, 20vw, 16rem);
+  aspect-ratio: 1;
+  margin: 0 auto 1.4rem;
+}
+
+.profil-kart__foto img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profil-kart__foto::after {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border: 1.5px solid color-mix(in srgb, var(--kil) 55%, transparent);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.profil-kart__ad {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--orman);
+}
+
+.profil-kart__unvan {
+  margin-top: .4rem;
+  font-size: .78rem;
+  font-weight: 650;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--kil-koyu);
+}
+
+.profil-kart__unvan + .profil-kart__unvan {
+  margin-top: .2rem;
+}
+
+@media (max-width: 900px) {
+  .sayfa-bas--profil .kap {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .profil-kart {
+    justify-self: center;
+  }
+}
+
+/* Uzun metinler için okuma sütunu (iki yana yaslı) */
+.okuma {
+  max-width: 46rem;
+  font-size: clamp(1.02rem, .98rem + .2vw, 1.1rem);
+  line-height: 1.75;
+}
+
+.okuma > p {
+  text-align: justify;
+}
+
+.okuma > * + * {
+  margin-top: 1.15rem;
+}
+
+/* Hikâyem: öne çıkan alıntı */
+.okuma .alinti-buyuk {
+  margin-block: 2.2rem;
+  padding: .4rem 0 .4rem 1.5rem;
+  border-left: 3px solid var(--kil);
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 1.1rem + 1vw, 1.75rem);
+  line-height: 1.4;
+  text-align: left;
+  color: var(--orman);
+}
+
+/* Bölüm başındaki tanıtım cümlesi (Vizyonum, Misyonum) */
+.alan-bolumu>div>p.bolum-girisi {
+  font-family: var(--font-serif);
+  font-size: clamp(1.12rem, 1.02rem + .4vw, 1.3rem);
+  line-height: 1.55;
+  text-align: left;
+  color: var(--orman);
+}
+
+/* Vizyonum Ve Misyonum: geniş ekranda iki kutu yan yana */
+@media (min-width: 1061px) {
+  .alan-detay--iki {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Terapi Anlayışım: kapanış kutusu */
+.alan-bolumu--kapanis {
+  background: var(--adacayi-acik);
+  border-color: color-mix(in srgb, var(--adacayi) 45%, transparent);
+}
+
+.alan-bolumu--kapanis a {
+  color: var(--orman);
+  font-weight: 650;
 }

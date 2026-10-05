@@ -61,7 +61,7 @@ const AYARLAR = {
     });
   }
 
-  /* 1b. Açılır menüler (Çalışma Alanlarım, Danışmanlık Seçenekleri) */
+  /* 1b. Açılır menüler (Ben Kimim?, Çalışma Alanlarım, Danışmanlık Seçenekleri) */
   const masaustuMenu = window.matchMedia("(min-width: 1240px)");
   d.querySelectorAll(".menu__grup").forEach((grup) => {
     const dugme = grup.querySelector(".menu__acilir");

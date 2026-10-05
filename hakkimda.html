@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hakkımda | Klinik Psikolog Hande Köksal</title>
-  <meta name="description" content="Klinik Psikolog Hande Köksal: eğitim, terapi yaklaşımı, aldığı eğitimler, mesleki üyelikler ve çalışma ilkeleri.">
+  <meta name="description" content="Klinik Psikolog Hande Köksal: psikoloji ve klinik psikoloji eğitimi, aldığı terapi eğitimleri ve çocuk, ergen, yetişkin ve ailelerle yürüttüğü çalışmalar.">
   <link rel="canonical" href="https://www.alanadiniz.com/hakkimda">
   <meta name="theme-color" content="#F6F1EA">
   <meta name="author" content="Hande Köksal">
@@ -14,7 +14,7 @@
   <meta property="og:locale" content="tr_TR">
   <meta property="og:site_name" content="Hande Köksal · Klinik Psikolog">
   <meta property="og:title" content="Hakkımda | Klinik Psikolog Hande Köksal">
-  <meta property="og:description" content="Klinik Psikolog Hande Köksal: eğitim, terapi yaklaşımı, aldığı eğitimler, mesleki üyelikler ve çalışma ilkeleri.">
+  <meta property="og:description" content="Klinik Psikolog Hande Köksal: psikoloji ve klinik psikoloji eğitimi, aldığı terapi eğitimleri ve çocuk, ergen, yetişkin ve ailelerle yürüttüğü çalışmalar.">
   <meta property="og:url" content="https://www.alanadiniz.com/hakkimda">
   <meta property="og:image" content="https://www.alanadiniz.com/assets/img/og-gorsel.jpg?v=2">
   <meta property="og:image:width" content="1200">
@@ -41,18 +41,32 @@
         "name": "Hande Köksal",
         "jobTitle": "Klinik Psikolog",
         "url": "https://www.alanadiniz.com/hakkimda",
-        "image": "https://www.alanadiniz.com/assets/img/portre.svg",
+        "image": "https://www.alanadiniz.com/assets/img/portre-daire.svg",
         "worksFor": {
           "@id": "https://www.alanadiniz.com/#muayenehane"
         },
+        "alumniOf": [
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "İstanbul Kültür Üniversitesi"
+          },
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "İstanbul Arel Üniversitesi"
+          }
+        ],
         "knowsAbout": [
-          "Kaygı",
-          "Panik atak",
-          "Depresyon",
-          "Travma",
-          "İlişki sorunları",
-          "Yas",
-          "Stres ve tükenmişlik",
+          "Bireysel Danışmanlık",
+          "Çocuk Danışmanlığı",
+          "Ergen Danışmanlığı",
+          "Aile Danışmanlığı",
+          "Çift ve Evlilik Danışmanlığı",
+          "Akademik Süreç ve Sınav Kaygısı Danışmanlığı",
+          "Dikkat ve Odaklanmaya Yönelik Çalışmalar",
+          "Öğrenme Güçlüklerine Yönelik Çalışmalar",
+          "Psikolojik değerlendirme",
+          "EMDR",
+          "Oyun terapisi",
           "Bilişsel Davranışçı Terapi"
         ]
       },
@@ -92,7 +106,20 @@
       </button>
       <nav class="menu" id="ana-menu" aria-label="Ana menü">
         <ul class="menu__liste">
-          <li><a class="menu__link" href="hakkimda.html" aria-current="page">Hakkımda</a></li>
+          <li class="menu__grup">
+            <button class="menu__link menu__acilir menu__link--aktif" type="button" aria-expanded="false" aria-controls="benkimim-menu">Ben Kimim?<svg class="ikon menu__ok" aria-hidden="true" focusable="false" stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"></path></svg></button>
+            <div class="menu__panel" id="benkimim-menu">
+              <div class="menu__panel-ic">
+                <ul class="menu__panel-liste">
+                  <li><a href="hakkimda.html" aria-current="page">Hakkımda</a></li>
+                  <li><a href="hikayem.html">Hikâyem</a></li>
+                  <li><a href="vizyonum-ve-misyonum.html">Vizyonum Ve Misyonum</a></li>
+                  <li><a href="terapi-anlayisim.html">Terapi Anlayışım</a></li>
+                  <li><a href="danismanlik-merkezim.html">Danışmanlık Merkezim</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
           <li class="menu__grup">
             <button class="menu__link menu__acilir" type="button" aria-expanded="false" aria-controls="alanlar-menu">Çalışma Alanlarım<svg class="ikon menu__ok" aria-hidden="true" focusable="false" stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"></path></svg></button>
             <div class="menu__panel" id="alanlar-menu">
@@ -137,94 +164,39 @@
 
   <main id="icerik">
 
-    <section class="sayfa-bas">
-      <span class="sayfa-bas__kemer" aria-hidden="true"></span>
+    <section class="sayfa-bas sayfa-bas--profil">
       <div class="kap">
         <div class="sayfa-bas__ic">
           <nav aria-label="Sayfa konumu"><ol class="kirinti"><li><a href="index.html">Ana Sayfa</a></li><li aria-current="page">Hakkımda</li></ol></nav>
-          <p class="ust-baslik">Hakkımda</p>
-          <h1>Merhaba, ben <span class="vurgu">Hande</span>.</h1>
-          <p class="giris">Klinik psikoloğum. Yüz yüze ve online psikoterapi çalışmaları yürütüyorum. Bu sayfada eğitimimi, çalışma biçimimi ve bağlı olduğum ilkeleri bulabilirsiniz.</p>
+          <p class="ust-baslik">Ben Kimim?</p>
+          <h1>Hakkımda</h1>
+          <p class="giris giris--yasli">İnsanı, onun iç dünyasını, yaşantılarını ve yaşamla kurduğu ilişkiyi anlamaya duyduğum merak, psikoloji alanına yönelmemde önemli bir yere sahip oldu. 2011 yılında başladığım İstanbul Kültür Üniversitesi Psikoloji Bölümü’nden 2015 yılında bölüm birincisi olarak mezun oldum.</p>
         </div>
+        <figure class="profil-kart" data-belir>
+          <div class="profil-kart__foto">
+            <!-- DEĞİŞTİR: Fotoğrafınızı assets/img/ klasörüne koyup src="..." yolunu güncelleyin; daire içinde kırpılarak gösterilir. -->
+            <img src="assets/img/portre-daire.svg" width="480" height="480" alt="Hande Köksal">
+          </div>
+          <figcaption>
+            <p class="profil-kart__ad">Hande Köksal</p>
+            <p class="profil-kart__unvan">Kurucu</p>
+            <p class="profil-kart__unvan">Klinik Psikolog</p>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
-    <section class="bolum bolum--ust-bosluksuz" aria-labelledby="hikaye-baslik">
-      <div class="kap hakkimda-giris">
-        <div class="portre" data-belir>
-          <!-- DEĞİŞTİR: portre.svg yerine kendi fotoğrafınızı koyun -->
-          <img src="assets/img/portre.svg" width="420" height="520" alt="Hande Köksal, Klinik Psikolog">
-        </div>
-        <div class="icerik" data-belir>
-          <h2 id="hikaye-baslik">Terapiye bakışım</h2>
-          <!-- DEĞİŞTİR: Bu paragrafları kendi hikâyeniz ve bakış açınızla güncelleyin. -->
-          <p>Terapi odasında en çok önemsediğim şey, kişinin kendini güvende hissetmesidir. Çünkü insan, anlaşıldığını hissettiğinde kendine farklı bir yerden bakabilmeye başlar.</p>
-          <p>Klinik psikoloji eğitimim sırasında ve sonrasında, süpervizyon eşliğinde; kaygı, depresif duygu durum, zorlayıcı yaşam deneyimleri ve ilişki sorunları yaşayan yetişkinlerle çalıştım. Her danışanın hikâyesinin kendine özgü olduğuna inanıyor, terapiyi hazır kalıplar yerine kişinin ihtiyaçlarına göre şekillendiriyorum.</p>
-          <p>Çalışmalarımda etkinliği bilimsel araştırmalarla desteklenen yöntemlerden yararlanıyorum. Mesleki gelişimimi eğitimler ve süpervizyonla sürdürüyor, etik ilkeleri çalışmamın merkezinde tutuyorum.</p>
-          <blockquote>İnsan, anlaşıldığını hissettiğinde değişim için gereken cesareti de bulmaya başlar.</blockquote>
-        </div>
-      </div>
-    </section>
-
-    <section class="bolum bolum--kum2" aria-labelledby="egitim-baslik">
-      <div class="kap iki-sutun">
-        <div data-belir>
-          <p class="ust-baslik">Eğitim</p>
-          <h2 id="egitim-baslik">Akademik <span class="vurgu">geçmişim</span></h2>
-          <p class="giris">Klinik psikolog unvanı; psikoloji lisansının ardından klinik psikoloji alanında tezli yüksek lisans ya da doktora eğitimini gerektirir.</p>
-        </div>
-        <!-- DEĞİŞTİR: Eğitim bilgilerinizi yazın -->
-        <ol class="zaman" role="list" data-belir>
-          <li>
-            <span class="zaman__yil">[Yıl] – [Yıl]</span>
-            <h3>Klinik Psikoloji Yüksek Lisansı (tezli)</h3>
-            <p>[Üniversite adı] · Tez: [Tez başlığı]</p>
-          </li>
-          <li>
-            <span class="zaman__yil">[Yıl] – [Yıl]</span>
-            <h3>Psikoloji Lisansı</h3>
-            <p>[Üniversite adı]</p>
-          </li>
-          <li>
-            <span class="zaman__yil">[Yıl] – günümüz</span>
-            <h3>Klinik çalışmalar ve süpervizyon</h3>
-            <p>[Çalıştığınız kurumlar / süpervizyon bilgisi]</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="bolum" aria-labelledby="egitimler-baslik">
+    <section class="bolum bolum--ust-bosluksuz" aria-label="Hakkımda">
       <div class="kap">
-        <div class="bolum-baslik" data-belir>
-          <p class="ust-baslik">Sertifikalı eğitimler</p>
-          <h2 id="egitimler-baslik">Aldığım <span class="vurgu">terapi</span> eğitimleri</h2>
-          <p class="giris">Terapide kullandığım yöntemler için aldığım yapılandırılmış eğitimler.</p>
+        <div class="okuma" data-belir>
+          <p>Lisans eğitimim boyunca psikolojiyi yalnızca akademik bilgiler üzerinden değil, farklı çalışma alanlarını deneyimleyerek tanımaya çalıştım. İstanbul Adalet Sarayı, Altis Danışmanlık, GATA Haydarpaşa Eğitim Hastanesi ve çeşitli anaokullarında gerçekleştirdiğim stajlar, farklı yaş gruplarının ve farklı yaşam koşullarının insan üzerindeki etkilerini gözlemleme fırsatı sundu. 2013 yılında İstanbul Kültür Üniversitesi bünyesinde başladığım Sosyodrama Atölye Çalışması da insan ilişkilerini ve grup dinamiklerini farklı bir çerçeveden ele almama katkı sağladı. Bunun yanı sıra aynı yıl içerisinde Dikkat Eksikliği Hiperaktivite ve Özel Öğrenme Güçlüğü Eğitimi’ne katılarak çocukların dikkat ve öğrenme süreçlerine ilişkin bilgi ve deneyimimi geliştirmeye başladım. 2014 yılında ise Çocuk Çizimlerinin Analitik Yorumu Eğitimi’ne katılarak çocukların dünyasını ve kendilerini ifade etme biçimlerini anlamaya yönelik bakış açımı geliştirdim.</p>
+          <p>Lisans eğitimimin ardından çocuk ve ergenlerle çalıştığım farklı eğitim kurumları ile özel eğitim ve rehabilitasyon merkezlerinde görev aldım. Bu süreçte çocukların gelişimsel özelliklerini, öğrenme süreçlerini, duygusal ihtiyaçlarını ve aileleriyle kurdukları ilişkileri daha yakından tanıma fırsatı buldum. Bu çalışmalarla eş zamanlı olarak 2016 yılında İstanbul Üniversitesi’nde Pedagojik Formasyon Sertifika Eğitimi’ni tamamladım. 2016-2017 yılları arasında Filiz Çetin eğitmenliğinde Çocuk Merkezli Oyun Terapisi Eğitimi’ni tamamladım.</p>
+          <p>Klinik psikoloji alanındaki uzmanlık eğitimimi 2017-2019 yılları arasında İstanbul Arel Üniversitesi Klinik Psikoloji Tezli Yüksek Lisans Programı’nda tamamladım. Yüksek lisans eğitimim kapsamında, süpervizyon eşliğinde Arel Üniversitesi Psikoterapi Merkezi’nde danışanlarla klinik görüşmeler yürüttüm. Bu süreçte, yüksek lisans programım kapsamında bir danışmanlık merkezinde klinik stajımı tamamladım. Sonrasında ATİ Gelişim Akademisi’nde çocuk, ergen ve ailelerle klinik çalışmalarımı sürdürdüm.</p>
+          <p>Mesleki yolculuğum ilerledikçe, psikoterapiye ilişkin bakışım da farklı eğitim ve deneyimlerle şekillendi. 2018-2020 yılları arasında Rorschach ve Projektif Testler Derneği kapsamında, çocukların ruhsal dünyasını anlamaya yönelik projektif değerlendirme eğitimleri aldım. Bu süreçte, Neslihan Zabcı eğitmenliğinde Çocuğun Ruhsal Dünyasının Projektif Testlerle Değerlendirilmesi eğitimini; 2019-2020 yılları arasında ise Funda Akkapulu eğitmenliğinde Çocuk Çizimlerinin Projektif Değerlendirilmesi eğitimini tamamladım.</p>
+          <p>Pandemi süreciyle birlikte 2020 yılında mesleki çalışmalarımı İstanbul’dan Kocaeli’ye taşıdım. Bu dönemden itibaren çocuk, ergen ve yetişkinlerle klinik görüşmeler ve psikoterapi süreçleri yürütmeye devam ederken, mesleki eğitimlerimi de sürdürdüm. Nilüfer Devecigil eğitmenliğinde Deneyimsel Oyun Terapisi I. ve II. Düzey Eğitimlerini; Davranış Bilimleri Enstitüsü kapsamında Emre Konuk ve Asena Yurtsever eğitmenliğinde EMDR Terapisi I. ve II. Düzey eğitimlerini tamamladım. 2022 yılında Çocuk ve Ergenlerde Bilişsel Davranışçı Terapi Eğitimi’ni tamamladım; aynı dönemde Dikkat Eksikliği ve Hiperaktivite Bozukluğuna Yönelik Bedensel ve Bilişsel Müdahale Programı’na katıldım. Sibel Aydoğmuş eğitmenliğinde Beden Odaklı Travma Sağaltımı (BOTS) Temel Eğitimi’ni ve Biruni Üniversitesi Aile Danışmanlığı Eğitimi’ni tamamladım. 2023 yılında ise Ümran Korkmazlar eğitmenliğinde Çocuk ve Ergenler ile EMDR I. Düzey Eğitimi’ni tamamladım.</p>
+          <p>Mesleki çalışmalarımda yalnızca psikoterapi süreçlerine değil, ihtiyaç duyulduğunda psikolojik değerlendirmeye de yer veriyorum. Çocuk ve ergenlerin gelişimsel, bilişsel, dikkat ve duygusal süreçlerini değerlendirmek amacıyla WISC-IV, CAS, Moxo Dikkat Testi, Ankara Gelişim Tarama Envanteri, Peabody Resim Kelime Tanıma Testi, Bender Gestalt Görsel Motor Algı Testi, Beier Cümle Tamamlama Testi, resim çizim testleri ve çeşitli duygudurum ölçeklerinden yararlanıyorum.</p>
+          <p>Bugün çalışmalarımı çocuk, ergen, yetişkin ve ailelerle sürdürüyorum. Her danışanın yaşam öyküsünün ve deneyimlerinin kendine özgü olduğuna inanıyor; terapi sürecinde yalnızca yaşanan güçlüğe değil, kişinin duygularına, düşüncelerine, ilişkilerine ve yaşam koşullarına bütüncül bir çerçeveden bakmayı önemsiyorum. Psikoterapiyi, kişinin kendisini ve kendi hikâyesini daha yakından tanımasına, yaşantılarını anlamlandırmasına ve yaşamına farklı açılardan bakabilmesine alan açan bir süreç olarak görüyorum. Bu süreçte danışanın ihtiyaçlarını, sınırlarını ve kendi hızını gözeterek, bilimsel bilgi ve mesleki etik ilkeler doğrultusunda eşlik etmeyi önemsiyorum.</p>
         </div>
-        <!-- DEĞİŞTİR: Yalnızca tamamladığınız eğitimleri yazın -->
-        <ul class="kart-izgara" role="list">
-          <li class="kart" data-belir><h3>Bilişsel Davranışçı Terapi</h3><p>[Eğitimi veren kurum] · [Yıl]</p></li>
-          <li class="kart" data-belir><h3>Şema Terapi</h3><p>[Eğitimi veren kurum] · [Yıl]</p></li>
-          <li class="kart" data-belir><h3>EMDR</h3><p>[Eğitimi veren kurum] · [Düzey] · [Yıl]</p></li>
-          <li class="kart" data-belir><h3>Kabul ve Kararlılık Terapisi</h3><p>[Eğitimi veren kurum] · [Yıl]</p></li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="bolum bolum--kum2" aria-labelledby="ilkeler-baslik">
-      <div class="kap">
-        <div class="bolum-baslik" data-belir>
-          <p class="ust-baslik">Çalışma ilkelerim</p>
-          <h2 id="ilkeler-baslik">Size karşı <span class="vurgu">taahhütlerim</span></h2>
-        </div>
-        <ul class="kart-izgara" role="list">
-          <li class="kart" data-belir><h3>Gizlilik</h3><p>Paylaştıklarınız, yasal zorunluluklar dışında, yazılı onayınız olmadan hiç kimseyle paylaşılmaz.</p></li>
-          <li class="kart" data-belir><h3>Mesleki etik</h3><p>Mesleğin etik ilkelerine ve yasal düzenlemelere bağlı kalarak, yetkinlik alanım içinde çalışırım.</p></li>
-          <li class="kart" data-belir><h3>Sürekli gelişim</h3><p>Mesleki bilgimi eğitimler, güncel literatür ve süpervizyonla düzenli olarak güncel tutarım.</p></li>
-          <li class="kart" data-belir><h3>İş birliği</h3><p>Gerekli durumlarda, onayınızla psikiyatri uzmanları ve diğer sağlık profesyonelleriyle iş birliği yaparım.</p></li>
-        </ul>
-        <!-- DEĞİŞTİR: Üye olduğunuz meslek kuruluşlarını yazın ya da bu satırı silin -->
-        <p class="alan-notu">Mesleki üyelikler: [Meslek kuruluşu adı] · [Meslek kuruluşu adı]</p>
       </div>
     </section>
 
@@ -234,8 +206,8 @@
           <h2 id="cagri-baslik">Tanışmak ister <span class="vurgu">misiniz?</span></h2>
           <p>Kısa bir ön görüşmeyle beklentilerinizi dinleyebilir, sürecin size uygun olup olmadığını birlikte değerlendirebiliriz.</p>
           <div class="btn-grup">
-            <a class="btn btn--acik" href="iletisim.html#on-gorusme">Ön görüşme talebi</a>
-            <a class="btn btn--cerceve-acik" href="https://wa.me/905XXXXXXXXX?text=Merhaba%2C%20web%20sitenizden%20ula%C5%9F%C4%B1yorum.%20%C3%96n%20g%C3%B6r%C3%BC%C5%9Fme%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener"><svg class="ikon" aria-hidden="true" focusable="false" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg> WhatsApp'tan yazın</a>
+            <a class="btn btn--acik" href="iletisim.html#on-gorusme">Ön Görüşme Talebi</a>
+            <a class="btn btn--cerceve-acik" href="https://wa.me/905XXXXXXXXX?text=Merhaba%2C%20web%20sitenizden%20ula%C5%9F%C4%B1yorum.%20%C3%96n%20g%C3%B6r%C3%BC%C5%9Fme%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener"><svg class="ikon" aria-hidden="true" focusable="false" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg> WhatsApp'tan Yazın</a>
           </div>
         </div>
       </div>
@@ -291,7 +263,7 @@
       <div class="alt__alt">
         <p>© <span data-yil>2026</span> Hande Köksal. Bu sitedeki içerikler bilgilendirme amaçlıdır; tanı ve tedavi yerine geçmez.</p>
         <!-- DEĞİŞTİR: Sitede her değişiklik yaptığınızda "Son güncelleme" tarihini güncelleyin (yasal zorunluluk). -->
-        <p class="alt__guncelleme">Son güncelleme: <strong><time datetime="2026-10-04">4 Ekim 2026</time></strong> · Site editörü: Hande Köksal – <a href="mailto:iletisim@alanadiniz.com">iletisim@alanadiniz.com</a></p>
+        <p class="alt__guncelleme">Son güncelleme: <strong><time datetime="2026-10-05">5 Ekim 2026</time></strong> · Site editörü: Hande Köksal – <a href="mailto:iletisim@alanadiniz.com">iletisim@alanadiniz.com</a></p>
       </div>
     </div>
   </footer>
